@@ -43,11 +43,12 @@ class MainController extends Controller
                     ->subject('reset password');
 
             });
-            return 'ok';
+            return back()->with('success','password reset link has been sent to your email!');
+
+//            return 'ok';
         }catch (\Exception $exception){
             return $exception;
         }
-//        return back()->with('success','password reset link has been sent to your email!');
     }
 
 }
