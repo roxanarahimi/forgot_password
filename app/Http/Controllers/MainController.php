@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 //use Predis\Command\Redis;
 //use Redis;
-use Illuminate\Support\Facades\Mail;
+//use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
@@ -37,7 +37,7 @@ class MainController extends Controller
             $link = route('user_reset_password_form',['token'=>$token, 'email'=>$request->email]);
             $body = '';
 //            Mail::send([‘text’=>’text.view’], $data, $callback);
-            Mail::send('email_forgot',['link'=>$link, 'body'=> $body],function ($mesage) use ($request){
+            \Mail::send('email_forgot',['link'=>$link, 'body'=> $body],function ($mesage) use ($request){
                 $mesage->from('noreply@webagent.ir', 'webagent');
                 $mesage->to($request->email, 'roxana')
                     ->subject('reset password');
