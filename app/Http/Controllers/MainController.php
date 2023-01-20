@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Redis;
 
 //use Illuminate\Redis;
-//use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Redis;
 //use Predis\Command\Redis;
-use Redis;
+//use Redis;
+use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
@@ -31,11 +32,12 @@ class MainController extends Controller
 
         try {
             $token=\Str::random(64);
-//            Redis::set($request->email,$token);
+            Redis::set($request->email,$token);
 
             $link = route('user_reset_password_form',['token'=>$token, 'email'=>$request->email]);
             $body = '';
-            \Mail::send('email_forgot',['link'=>$link, 'body'=> $body],function ($mesage) use ($request){
+//            Mail::send([‘text’=>’text.view’], $data, $callback);
+            Mail::send('email_forgot',['link'=>$link, 'body'=> $body],function ($mesage) use ($request){
                 $mesage->from('noreply@webagent.ir', 'webagent');
                 $mesage->to($request->email, 'roxana')
                     ->subject('reset password');
