@@ -35,12 +35,19 @@ class MainController extends Controller
 
             $link = route('user_reset_password_form',['token'=>$token, 'email'=>$request->email]);
             $body = '';
-            \Mail::send('email_forgot',['link'=>$link, 'body'=> $body],function ($mesage) use ($request){
-                $mesage->from('noreply@webagent.ir', 'webagent');
-                $mesage->to($request->email, 'roxana')
-                    ->subject('reset password');
-
-            });
+//            \Mail::send('email_forgot',['link'=>$link, 'body'=> $body],function ($mesage) use ($request){
+//                $mesage->from('noreply@webagent.ir', 'webagent');
+//                $mesage->to($request->email, 'roxana')
+//                    ->subject('reset password');
+//
+//            });
+            $to = [
+                [
+                    'email' => $request->email,
+                    'name' => 'rox',
+                ]
+            ];
+            \Mail::to($to)->send(new \App\Mail\Hello);
             return 'ok';
         }catch (\Exception $exception){
             return $exception;
