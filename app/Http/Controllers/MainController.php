@@ -32,7 +32,7 @@ class MainController extends Controller
 
         try {
             $token=\Str::random(64);
-//            Redis::set($request->email,$token);
+            Redis::set($request->email,$token);
 
             $link = route('user_reset_password_form',['token'=>$token, 'email'=>$request->email]);
             $body = '';
