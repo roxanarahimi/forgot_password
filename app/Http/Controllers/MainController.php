@@ -47,7 +47,7 @@ class MainController extends Controller
                     'name' => 'rox',
                 ]
             ];
-            \Mail::to($to)->send(new \App\Mail\Hello);
+            \Mail::to($to)->send(new $link);
             return 'ok';
         }catch (\Exception $exception){
             return $exception;
