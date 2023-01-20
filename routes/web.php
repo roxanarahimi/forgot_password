@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::get('/reset_password_request', function () {
     return view('reset_password_request');
 });
+Route::get('/user_reset_password_form', function () {
+    return view('user_reset_password_form');
+});
 Route::get('/', function () {
     return view('login');
 });
