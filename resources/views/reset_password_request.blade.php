@@ -19,9 +19,6 @@
     </head>
     <body style="background-color: #2f2f2f">
 
-    <h3 class="text-light">
-        {{ $message }}
-    </h3>
    <div class="container-fluid">
        <div class="row">
            <div style="margin-top: 200px;" class=" rounded col-md-6 col-xl-3 mx-auto ">
