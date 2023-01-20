@@ -47,7 +47,7 @@ class MainController extends Controller
                     'name' => 'rox',
                 ]
             ];
-            \Mail::to($to)->send(new $link);
+            \Mail::to($to)->send('email_forgot',['link'=>$link, 'body'=> $body]);
             return 'ok';
         }catch (\Exception $exception){
             return $exception;
